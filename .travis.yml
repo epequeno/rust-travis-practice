@@ -1,12 +1,4 @@
 language: rust
-before_script:
-  - rustup component add clippy
-  - cargo install --force cargo-audit
-  - cargo install --force --git https://github.com/kbknapp/cargo-outdated
-script:
-  - cargo clippy
-  - cargo audit
-  - cargo outdated
 rust:
   - stable
   - beta
@@ -15,4 +7,14 @@ matrix:
   allow_failures:
     - rust: nightly
   fast_finish: true
+dist: trusty
 cache: cargo
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "doing docker stuff....."
+      if: (type = pull_request) AND (branch = master)
