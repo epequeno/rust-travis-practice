@@ -7,4 +7,14 @@ matrix:
   allow_failures:
     - rust: nightly
   fast_finish: true
+dist: trusty
 cache: cargo
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "doing docker stuff....."
+      if: (type = pull_request) AND (branch = master)
