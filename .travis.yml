@@ -17,8 +17,8 @@ jobs:
     - stage: extra tests
       script: ./ci/test.sh
       rust:
-      - stable
-      - beta
+        - stable
+        - beta
       if: branch != master
     - stage: build docker image
       script:
