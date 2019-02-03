@@ -14,10 +14,9 @@ services:
 
 jobs:
   include:
-    - stage: extra tests
+    - stage: test
       script: ./ci/test.sh
       if: branch != master
-    - stage: build docker image
-      script:
-      - echo "doing docker stuff....."
+    - stage: deploy
+      script: ./ci/deploy.sh
       if: branch = master
