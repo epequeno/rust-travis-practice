@@ -12,15 +12,15 @@ services:
 
 jobs:
   include:
-    - stage: test stable
+    - stage: test
       rust: stable
       script: ./ci/test.sh
       if: branch != master
-    - stage: test beta
+    - stage: test
       rust: beta
       script: ./ci/test.sh
       if: branch != master
-    - stage: test nightly
+    - stage: test
       rust: nightly
       script: ./ci/test.sh
       if: branch != master    
