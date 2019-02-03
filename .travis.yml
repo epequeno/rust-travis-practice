@@ -1,10 +1,6 @@
 language: rust
 script:
 - echo "skipping tests..."
-rust:
-  - stable
-  - beta
-  - nightly
 matrix:
   allow_failures:
     - rust: nightly
@@ -17,8 +13,17 @@ services:
 jobs:
   include:
     - stage: test
+      rust: stable
       script: ./ci/test.sh
       if: branch != master
+    - stage: test
+      rust: beta
+      script: ./ci/test.sh
+      if: branch != master
+    - stage: test
+      rust: nightly
+      script: ./ci/test.sh
+      if: branch != master    
     - stage: deploy
       script: ./ci/deploy.sh
       if: branch = master
