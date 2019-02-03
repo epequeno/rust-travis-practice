@@ -7,11 +7,9 @@ matrix:
   fast_finish: true
 dist: trusty
 cache: cargo
-services:
-  - docker
-
 jobs:
   include:
+    # tests
     - stage: test
       rust: stable
       script: ./ci/test.sh
@@ -24,6 +22,16 @@ jobs:
       rust: nightly
       script: ./ci/test.sh
       if: branch != master    
+
+    # build
+    - stage: build
+      rust: stable
+      script: ./ci/build.sh
+      if: branch != master
+
+      # deploy    
     - stage: deploy
+      services:
+      - docker
       script: ./ci/deploy.sh
       if: branch = master
