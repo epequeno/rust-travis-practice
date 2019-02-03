@@ -1,6 +1,6 @@
-rustup component add clippy
-cargo install --force cargo-audit
-cargo install --force --git https://github.com/kbknapp/cargo-outdated
-cargo clippy
-cargo audit
-cargo outdated
+echo rustup component add clippy
+echo cargo install --force cargo-audit
+echo cargo install --force --git https://github.com/kbknapp/cargo-outdated
+echo cargo clippy
+echo cargo audit
+echo cargo outdated
